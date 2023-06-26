@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Streamlit",
+            "type": "python",
+            "request": "launch",
+            "module": "streamlit",
+            "console": "integratedTerminal",
+            "args": [
+                "run",
+                "${file}"
+            ],
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "name": "Ingestion",
+            "type": "python",
+            "request": "launch",
+            "module": "streamlit",
+            "console": "integratedTerminal",
+            "args": [
+                "run",
+                "${file}"
+            ],
+            "envFile": "${workspaceFolder}/.env"
+        }, 
+    ]
+}

@@ -8,13 +8,14 @@ import pinecone
 
 pinecone.init(
     api_key=os.environ["PINECONE_API_KEY"],
-    environment=os.environ["PINECONE_ENVIRONMENT_REGION"],
+    environment=os.environ["PINECONE_ENVIRONMENT"],
 )
-INDEX_NAME = "langchain-doc-index"
-
+INDEX_NAME = "eli-index" #"langchain-doc-index"
+index = pinecone.Index(index_name=INDEX_NAME)
 
 def ingest_docs():
-    loader = ReadTheDocsLoader("python.langchain.com/en/latest/index.html")
+    #index.delete(deleteAll='true', namespace="")
+    loader = ReadTheDocsLoader(path="langchain-docs/langchain.readthedocs.io/en/latest") # ReadTheDocsLoader("python.langchain.com/en/latest/index.html")
     raw_documents = loader.load()
     print(f"loaded {len(raw_documents)} documents")
     text_splitter = RecursiveCharacterTextSplitter(
@@ -29,6 +30,9 @@ def ingest_docs():
     embeddings = OpenAIEmbeddings()
     print(f"Going to add {len(documents)} to Pinecone")
     Pinecone.from_documents(documents, embeddings, index_name=INDEX_NAME)
+    # Getting Index Details
+    (pinecone.describe_index(INDEX_NAME))
+    print(index.describe_index_stats())
     print("****Loading to vectorestore done ***")
 
 

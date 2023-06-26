@@ -1,4 +1,12 @@
 
+In vscode open main.py file.
+Run & Debug Streamlit runner
+
+TODO
+https://towardsdatascience.com/crud-with-pinecone-ee6b6f8b54e8
+https://github.com/PradipNichite/Youtube-Tutorials/tree/main/Langchain%20Chatbot
+
+
 # LangChain Documentation Helper
 
 A repository for learning LangChain by building a generative ai application.
